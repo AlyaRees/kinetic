@@ -63,6 +63,24 @@ def add_client_route():
     add_client(name, level, age, gender)    # passes values into the database insert function
     return redirect(url_for('index'))   #redirect back to main window once operation is complete
 
+@app.route('/search_client', methods=['POST'])
+def search_client():
+    name_query = request.form['SearchName']
+
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM clients WHERE Name LIKE ?", (f"%{name_query}%",))
+    results = cursor.fetchall()
+    conn.close()
+
+
+    highlight_ids = [client[0] for client in results]     # Loop through each matching client and save their ID
+    all_clients = get_all_clients()                        # Get all clients  
+
+    reordered = sorted(all_clients, key=lambda c: c[0] not in highlight_ids)    # Reorder: matching clients first – key determines how the all_clients list is sorted
+    return render_template('index.html', clients=reordered, highlight_ids=highlight_ids)
+
+
 # ========================= Run App ========================= #
 
 # import os
@@ -76,6 +94,13 @@ if __name__ == '__main__':
     #     add_client("Chloe", "Advanced", 29, "Female")
     #     add_client("David", "Beginner", 40, "Male")
     #     add_client("Ella", "Intermediate", 22, "Female")
+
+    # conn = sqlite3.connect(DB_PATH)
+    # cursor = conn.cursor()
+    # cursor.execute("DELETE FROM clients WHERE ClientID = x")
+    # conn.commit()
+    # conn.close()
+
 
     app.run(debug=True)
 

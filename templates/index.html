@@ -12,7 +12,11 @@
     <div class = "wrapper">
         <div class="input-group">
             <h1> WELCOME TO KINETIC</h1>
-            <input type="text" placeholder="Search" id="search input">
+        <form action="/search" method="GET">
+            <input type="text" name="query" placeholder="Search by name" required>
+            <button type="submit">Search</button>
+        </form>
+
     </div>
     <a href="/add">
         <button type="button">Add</button>
