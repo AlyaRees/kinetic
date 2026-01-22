@@ -1,5 +1,13 @@
 .container {
     display: flex;
-    justify-content: center; /* horizontal */
+    justify-content: center;
     height: 100vh;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgb(206, 150, 206);
 }
