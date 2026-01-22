@@ -11,10 +11,19 @@
   <h1>Add a new client</h1>
   <div class="form-container">
   <form action="/add_client" method="POST"> 
-    <input type="text" name="Name" placeholder="Name">
-    <input type="text" name="Age" placeholder="Age">
-    <input type="text" name="Level" placeholder="Level">
-    <input type="text" name="Gender" placeholder="Gender">
+    <input type="text" name="Name" placeholder="Name" required>
+    <input type="text" name="Age" placeholder="Age" required>
+    <select name="Level" id="Level" required>  <!--Dropdown menus for both Level and Gender-->
+      <option value="" disabled selected>Level</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+    <select name="Gender" id="Gender" required>
+      <option value="" disabled selected>Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
   <button type="submit" id="add-btn">Add</button>
   </form>
   </div>

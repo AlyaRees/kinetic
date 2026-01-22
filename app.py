@@ -55,12 +55,12 @@ def index():
 
 @app.route('/add_client', methods=['POST'])
 def add_client_route():
-    name = request.form['Name']
+    name = request.form['Name']     # extracts form values from the submitted form
     level = request.form['Level']
     age = int(request.form['Age'])
     gender = request.form['Gender']
 
-    add_client(name, level, age, gender)
+    add_client(name, level, age, gender)    # passes values into the database insert function
     return redirect(url_for('index'))   #redirect back to main window once operation is complete
 
 # ========================= Run App ========================= #
