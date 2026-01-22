@@ -1,0 +1,5 @@
+requirements.txt
+venv/
+database.db
+.env
+database.db-journal
