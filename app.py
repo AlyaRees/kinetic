@@ -51,7 +51,8 @@ def add_page():
 @app.route('/')     # automatically executes this function when the program runs
 def index():
     clients = get_all_clients()     # function that returns list of all users is passed as a parameter
-    return render_template('index.html', clients=clients)
+    return render_template('index.html', clients=clients, highlight_ids=[]) # highlights = empty as theres nothing to highlight rn
+
 
 @app.route('/add_client', methods=['POST'])
 def add_client_route():

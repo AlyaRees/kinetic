@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Main.css">
+    <!-- <link rel="stylesheet" href="Main.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
     
 </head>
 <body>
@@ -12,22 +14,21 @@
     <div class = "wrapper">
         <div class="input-group">
             <h1> WELCOME TO KINETIC</h1>
-        <form action="/search" method="GET">
-            <input type="text" name="query" placeholder="Search by name" required>
-            <button type="submit">Search</button>
-        </form>
 
+            <form action="/search_client" method="POST">
+                <input type="text" name="SearchName" placeholder="Search by name" required>
+                <button type="submit">Search</button>
+            </form>
     </div>
+
     <a href="/add">
         <button type="button">Add</button>
     </a>
 
-
     <ul class="user-list">
         <!-- Loop through every client in the list sent from Flask -->
         {% for client in clients %}
-        <li class="user-card">
-
+        <li class="user-card {% if client[0] in highlight_ids %}highlight{% endif %}">  <!--checks if this id is present in highlight_ids, if it is, we apply css highlight to it -->
             <div class="user-item"><strong>Name:</strong> {{ client[1] }}</div> <!--index corresponds to specific fields-->
             <div class="user-item"><strong>Level:</strong> {{ client[2] }}</div>
             <div class="user-item"><strong>Age:</strong> {{ client[3] }}</div>
