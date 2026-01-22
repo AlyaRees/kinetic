@@ -30,6 +30,16 @@ def get_all_clients():      # uses SELECT query and returns all clients as a lis
     conn.close()
     return clients
 
+def add_client(name, level, age, gender):   # parameters are taken and used as values to insert a new client into the database
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("""
+        INSERT INTO clients (Name, Level, Age, Gender)
+        VALUES (?, ?, ?, ?)
+    """, (name, level, age, gender))
+    conn.commit()
+    conn.close()
+
 
 
 # ========================= FLASK ROUTES ========================
@@ -43,6 +53,15 @@ def index():
     clients = get_all_clients()     # function that returns list of all users is passed as a parameter
     return render_template('index.html', clients=clients)
 
+@app.route('/add_client', methods=['POST'])
+def add_client_route():
+    name = request.form['Name']
+    level = request.form['Level']
+    age = int(request.form['Age'])
+    gender = request.form['Gender']
+
+    add_client(name, level, age, gender)
+    return redirect(url_for('index'))   #redirect back to main window once operation is complete
 
 # ========================= Run App ========================= #
 
