@@ -1,0 +1,5 @@
+.container {
+    display: flex;
+    justify-content: center; /* horizontal */
+    height: 100vh;
+}
