@@ -22,7 +22,7 @@ def create_clients_table():     # Creates table
     conn.close()
 
 
-def get_all_clients():      # uses SELECT query and returns all clients as a list (tuple)
+def get_all_clients():      # uses SELECT query and returns all clients as a list 
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM clients")
@@ -33,6 +33,9 @@ def get_all_clients():      # uses SELECT query and returns all clients as a lis
 
 
 # ========================= FLASK ROUTES ========================
+@app.route('/add')
+def add_page():
+    return render_template('add.html')
 
 
 @app.route('/')     # automatically executes this function when the program runs
@@ -48,7 +51,7 @@ def index():
 if __name__ == '__main__':
     create_clients_table()
 
-    # if os.environ.get("WERKZEUG_RUN_MAIN") == "true": 
+    # if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
     #     add_client("Alice", "Beginner", 25, "Female")
     #     add_client("Ben", "Intermediate", 32, "Male")
     #     add_client("Chloe", "Advanced", 29, "Female")
