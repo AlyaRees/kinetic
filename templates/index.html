@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Main.css">
+    
+</head>
+<body>
+    <!-- This is for the Welcome page -->
+    <div class = "wrapper">
+        <div class="input-group">
+            <h1> WELCOME TO KINETIC</h1>
+            <input type="text" placeholder="Search" id="search input">
+    </div>
+
+
+    <ul class="user-list">
+        <!-- Loop through every client in the list sent from Flask -->
+        {% for client in clients %}
+        <li class="user-card">
+
+            <div class="user-item"><strong>Name:</strong> {{ client[1] }}</div> <!--index corresponds to specific fields-->
+            <div class="user-item"><strong>Level:</strong> {{ client[2] }}</div>
+            <div class="user-item"><strong>Age:</strong> {{ client[3] }}</div>
+            <div class="user-item"><strong>Gender:</strong> {{ client[4] }}</div>
+
+        </li>
+        {% endfor %}
+    </ul>
+
+
+
+    
+       
+</body>
+</html>
