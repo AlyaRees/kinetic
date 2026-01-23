@@ -23,7 +23,7 @@ button {
 }
 
 button:hover {
-    background-color: #a04545;
+    background-color: #ffd050;
 }
 
 .logo_wrapper {
@@ -49,7 +49,7 @@ button:hover {
 }
 
 .add_list_wrapper{
-    gap: 20px;
+    padding-right: 100px;
 }
 
 .headshot{

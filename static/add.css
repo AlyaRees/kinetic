@@ -1,13 +1,39 @@
-.container {
+
+
+.form-container{
     display: flex;
-    justify-content: center;
-    height: 100vh;
+    flex-direction: column;
+    gap: 12px; /* space between each field */
 }
 
-.form-container {
+.form-container form input,
+.form-container form select {
+    width: 100%;          /* full width */
+    padding: 14px;        /* bigger touch area */
+    font-size: 18px;      /* bigger text */
+    border-radius: 6px;   /* nicer shape */
+    margin-bottom: 12px;  /* spacing between fields */
+}
+
+
+.logo_wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: rgb(206, 150, 206);
+
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #ff914d;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ffd050;
 }

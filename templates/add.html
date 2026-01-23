@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='add.css') }}">
 </head>
 <body>
+   <div class = "logo_wrapper">
+      <img src="/static/Kinetik_logo.png" alt="icon" class="logo">
+    </div>
     <div class="container">
   <h1>Add a new client</h1>
   <div class="form-container">
@@ -24,9 +27,9 @@
       <option value="Male">Male</option>
       <option value="Female">Female</option>
     </select>
-  <button type="submit" id="add-btn">Add New Client</button>
   </form>
   </div>
+    <button type="submit" id="add-btn">Add New Client</button>
   </div>
 </body>
 </html>
