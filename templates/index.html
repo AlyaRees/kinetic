@@ -11,25 +11,35 @@
 </head>
 <body>
     <!-- This is for the Welcome page -->
-    <div class = "wrapper">
-        <div class="input-group">
-            <h1> WELCOME TO KINETIC</h1>
+        <div class = "logo_wrapper">
+            <img src="/static/Kinetik_logo.png" alt="icon" class="logo">
+        </div>
 
+        <div class="search_wrapper">
             <form action="/search_client" method="POST">
                 <input type="text" name="SearchName" placeholder="Search by name" required>
                 <button type="submit">Search</button>
             </form>
+        </div>
+
+
+    <div class = "add_list_wrapper"></div>
+        <a href="/add">
+            <button type="button">Add</button>
+        </a>
+        <label style="font-weight: bold; background-color: #ff914d; padding: 5px; border-radius: 4px;">
+            CLIENT LIST
+        </label>
     </div>
 
-    <a href="/add">
-        <button type="button">Add</button>
-    </a>
-
-    <ul class="user-list">
+    <ul class="user_list">
         <!-- Loop through every client in the list sent from Flask -->
         {% for client in clients %}
         <li class="user-card {% if client[0] in highlight_ids %}highlight{% endif %}">  <!--checks if this id is present in highlight_ids, if it is, we apply css highlight to it -->
-            <div class="user-item"><strong>Name:</strong> {{ client[1] }}</div> <!--index corresponds to specific fields-->
+            <img src="/static/pink_lady.avif" alt="headshot" class="headshot">
+            <div class="user-item">
+                <strong>Name:</strong> {{ client[1] }}
+            </div> <!--index corresponds to specific fields-->
             <div class="user-item"><strong>Level:</strong> {{ client[2] }}</div>
             <div class="user-item"><strong>Age:</strong> {{ client[3] }}</div>
             <div class="user-item"><strong>Gender:</strong> {{ client[4] }}</div>
